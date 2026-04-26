@@ -1,0 +1,40 @@
+name: Build Windows NSIS Installer
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [ main, build-nsis-ci ]
+
+jobs:
+  build-nsis:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 8
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build TypeScript / app
+        run: pnpm run build
+
+      - name: Run electron-builder (NSIS)
+        run: pnpm exec electron-builder --win nsis "-c.extraMetadata.main=dist/js/main.js" --x64 --publish never
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload installer artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: velcord-windows-installer
+          path: dist/*.exe
