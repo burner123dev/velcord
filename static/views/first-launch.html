@@ -2,7 +2,7 @@
 <meta charset="utf-8" />
 
 <head>
-    <title>Vesktop Setup</title>
+    <title>Velcord Setup</title>
 
     <link rel="stylesheet" href="./common.css" type="text/css" />
 
@@ -90,26 +90,29 @@
 
         button {
             padding: 0.6em;
-            background: red;
-            color: white;
+            background: #111111;
+            color: #ffffff;
             border-radius: 6px;
-            border: none;
+            border: 1px solid var(--border);
             cursor: pointer;
             transition: 200ms filter;
+            font-family: var(--code-font);
         }
 
         button:hover {
-            filter: brightness(0.8);
+            filter: brightness(1.1);
         }
 
         #submit {
-            background: green;
+            background: #ffffff;
+            color: #000000;
+            border-color: #ffffff;
         }
     </style>
 </head>
 
 <body>
-    <h1>Welcome to Vesktop</h1>
+    <h1>Welcome to Velcord</h1>
     <p>Let's customise your experience!</p>
 
     <form>
@@ -125,7 +128,7 @@
         <label>
             <div>
                 <h2>Start with System</h2>
-                <span>Automatically open Vesktop when your computer starts</span>
+                <span>Automatically open Velcord when your computer starts</span>
             </div>
             <input type="checkbox" name="autoStart" />
         </label>
@@ -142,7 +145,7 @@
         <label>
             <div>
                 <h2>Import Settings</h2>
-                <span>Import Settings from existing Vencord install (if found)</span>
+                <span>Import settings from an existing Velcord install if found</span>
             </div>
             <input type="checkbox" name="importSettings" checked />
         </label>

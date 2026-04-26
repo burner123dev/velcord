@@ -1,6 +1,6 @@
 /*
- * Vesktop, a desktop app aiming to give you a snappier Discord Experience
- * Copyright (c) 2025 Vendicated and Vesktop contributors
+ * Velcord, a custom terminal-styled Discord client
+ * Copyright (c) 2025 Vendicated and Velcord contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
@@ -80,13 +80,13 @@ export function checkCommandLineForHelpOrVersion() {
     const { help, version } = CommandLine.values;
 
     if (version) {
-        console.log(`Vesktop v${app.getVersion()}`);
+        console.log(`Velcord v${app.getVersion()}`);
         app.exit(0);
     }
 
     if (help) {
         const base = stripIndent`
-            Vesktop v${app.getVersion()}
+            Velcord v${app.getVersion()}
 
             Usage: ${basename(process.execPath)} [options] [url]
 
@@ -96,7 +96,7 @@ export function checkCommandLineForHelpOrVersion() {
             Chromium Options:
               See <https://peter.sh/experiments/chromium-command-line-switches> - only some of them work
 
-            Vesktop Options:
+            Velcord Options:
         `;
 
         const optionLines = Object.entries(options)

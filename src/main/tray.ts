@@ -1,10 +1,10 @@
 /*
- * Vesktop, a desktop app aiming to give you a snappier Discord Experience
- * Copyright (c) 2025 Vendicated and Vesktop contributors
+ * Velcord, a custom terminal-styled Discord client
+ * Copyright (c) 2025 Vendicated and Velcord contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-import { app, BrowserWindow, Menu, Tray } from "electron";
+import { app, BrowserWindow, Menu, Tray, nativeImage, NativeImage } from "electron";
 
 import { createAboutWindow } from "./about";
 import { AppEvents } from "./events";
@@ -18,7 +18,8 @@ let trayVariant: "tray" | "trayUnread" = "tray";
 
 AppEvents.on("userAssetChanged", async asset => {
     if (tray && (asset === "tray" || asset === "trayUnread")) {
-        tray.setImage(await resolveAssetPath(trayVariant));
+        const image = await resolveAssetPath(trayVariant);
+        tray.setImage(typeof image === "string" ? image : image);
     }
 });
 
@@ -28,7 +29,8 @@ AppEvents.on("setTrayVariant", async variant => {
     trayVariant = variant;
     if (!tray) return;
 
-    tray.setImage(await resolveAssetPath(trayVariant));
+    const image = await resolveAssetPath(trayVariant);
+    tray.setImage(typeof image === "string" ? image : image);
 });
 
 export function destroyTray() {
@@ -53,7 +55,7 @@ export async function initTray(win: BrowserWindow, setIsQuitting: (val: boolean)
             click: createAboutWindow
         },
         {
-            label: "Repair Vencord",
+            label: "Repair Velcord",
             async click() {
                 await downloadVencordFiles();
                 app.relaunch();
@@ -61,7 +63,7 @@ export async function initTray(win: BrowserWindow, setIsQuitting: (val: boolean)
             }
         },
         {
-            label: "Reset Vesktop",
+            label: "Reset Velcord",
             async click() {
                 await clearData(win);
             }
@@ -85,8 +87,9 @@ export async function initTray(win: BrowserWindow, setIsQuitting: (val: boolean)
         }
     ]);
 
-    tray = new Tray(await resolveAssetPath(trayVariant));
-    tray.setToolTip("Vesktop");
+    const trayImage = await resolveAssetPath(trayVariant);
+    tray = new Tray(typeof trayImage === "string" ? trayImage : trayImage);
+    tray.setToolTip("Velcord");
     tray.setContextMenu(trayMenu);
     tray.on("click", onTrayClick);
 }

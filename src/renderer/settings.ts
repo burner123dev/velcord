@@ -7,7 +7,7 @@
 import { useEffect, useReducer } from "@vencord/types/webpack/common";
 import { SettingsStore } from "shared/utils/SettingsStore";
 
-import { VesktopLogger } from "./logger";
+import { VelcordLogger } from "./logger";
 import { localStorage } from "./utils";
 
 export const Settings = new SettingsStore(VesktopNative.settings.get());
@@ -47,7 +47,7 @@ const currentState: TState = (() => {
     try {
         return JSON.parse(stored);
     } catch (e) {
-        VesktopLogger.error("Failed to parse stored state", e);
+        VelcordLogger.error("Failed to parse stored state", e);
         return {};
     }
 })();

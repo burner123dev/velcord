@@ -4,10 +4,10 @@
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
-/**
- * Wraps the given function so that it can only be called once
- * @param fn Function to wrap
- * @returns New function that can only be called once
+/*
+ * Velcord, a custom terminal-styled Discord client
+ * Copyright (c) 2025 Vendicated and Velcord contributors
+ * SPDX-License-Identifier: GPL-3.0-or-later
  */
 export function once<T extends Function>(fn: T): T {
     let called = false;

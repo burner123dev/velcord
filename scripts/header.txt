@@ -1,5 +1,5 @@
 /*
- * Vesktop, a desktop app aiming to give you a snappier Discord Experience
+ * Velcord, a custom terminal-styled Discord client
  * Copyright (c) {year} {author}
  * SPDX-License-Identifier: GPL-3.0-or-later
  */

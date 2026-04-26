@@ -26,7 +26,7 @@ export const AutoStartToggle: SettingsComponent = ({ settings }) => {
 
             <VesktopSettingsSwitch
                 title="Auto Start Minimized"
-                description={"Start Vesktop minimized when starting with system"}
+                description={"Start Velcord minimized when starting with system"}
                 value={settings.autoStartMinimized ?? false}
                 onChange={v => (settings.autoStartMinimized = v)}
                 disabled={!autoStartEnabled}

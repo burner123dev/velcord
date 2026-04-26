@@ -10,7 +10,7 @@ import "./ipc";
 import "./userAssets";
 import "./vesktopProtocol";
 
-import { app, BrowserWindow, nativeTheme } from "electron";
+import { app, BrowserWindow, nativeTheme, session } from "electron";
 
 import { DATA_DIR } from "./constants";
 import { createFirstLaunchTour } from "./firstLaunch";
@@ -21,7 +21,7 @@ import { Settings, State } from "./settings";
 import { setAsDefaultProtocolClient } from "./utils/setAsDefaultProtocolClient";
 import { isDeckGameMode } from "./utils/steamOS";
 
-console.log("Vesktop v" + app.getVersion());
+console.log("Velcord v" + app.getVersion());
 
 // Make the Vencord files use our DATA_DIR
 process.env.VENCORD_USER_DATA_DIR = DATA_DIR;
@@ -111,10 +111,17 @@ function init() {
     });
 
     app.whenReady().then(async () => {
-        if (process.platform === "win32") app.setAppUserModelId("dev.vencord.vesktop");
+        if (process.platform === "win32") app.setAppUserModelId("dev.vencord.velcord");
 
         registerScreenShareHandler();
         registerMediaPermissionsHandler();
+
+        // Log network request errors to help diagnose missing resource loads
+        try {
+            session.defaultSession.webRequest.onErrorOccurred((details) => {
+                console.log('[request-error]', details.error, details.url, details.method);
+            });
+        } catch (e) { }
 
         bootstrap();
 
@@ -126,10 +133,10 @@ function init() {
 
 if (!app.requestSingleInstanceLock({ IS_DEV })) {
     if (IS_DEV) {
-        console.log("Vesktop is already running. Quitting previous instance...");
+        console.log("Velcord is already running. Quitting previous instance...");
         init();
     } else {
-        console.log("Vesktop is already running. Quitting...");
+        console.log("Velcord is already running. Quitting...");
         app.quit();
     }
 } else {

@@ -128,6 +128,10 @@ handle(IpcEvents.MAXIMIZE, (e, key?: string) => {
     }
 });
 
+handle(IpcEvents.HIDE_WINDOW, (e, key?: string) => {
+    getWindow(e, key).hide();
+});
+
 handleSync(IpcEvents.SPELLCHECK_GET_AVAILABLE_LANGUAGES, e => {
     e.returnValue = session.defaultSession.availableSpellCheckerLanguages;
 });

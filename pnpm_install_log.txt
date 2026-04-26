@@ -1,0 +1,14 @@
+Lockfile is up to date, resolution step is skipped
+Packages: +746
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Progress: resolved 0, reused 1, downloaded 0, added 0
+Progress: resolved 0, reused 5, downloaded 0, added 0
+Progress: resolved 0, reused 22, downloaded 0, added 0
+Progress: resolved 0, reused 23, downloaded 0, added 0
+Progress: resolved 0, reused 26, downloaded 0, added 0
+Progress: resolved 0, reused 76, downloaded 0, added 0
+Progress: resolved 0, reused 88, downloaded 0, added 0
+Progress: resolved 0, reused 92, downloaded 0, added 0
+Progress: resolved 0, reused 107, downloaded 0, added 0
+Progress: resolved 0, reused 129, downloaded 0, added 0
+Progress: resolved 0, reused 137, downloaded 0, added 0

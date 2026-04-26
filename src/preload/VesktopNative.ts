@@ -75,6 +75,7 @@ export const VesktopNative = {
         close: (key?: string) => invoke<void>(IpcEvents.CLOSE, key),
         minimize: (key?: string) => invoke<void>(IpcEvents.MINIMIZE, key),
         maximize: (key?: string) => invoke<void>(IpcEvents.MAXIMIZE, key),
+        hide: (key?: string) => invoke<void>(IpcEvents.HIDE_WINDOW, key),
         flashFrame: (flag: boolean) => invoke<void>(IpcEvents.FLASH_FRAME, flag),
         setDevtoolsCallbacks: (onOpen: () => void, onClose: () => void) => {
             onDevtoolsOpen = onOpen;

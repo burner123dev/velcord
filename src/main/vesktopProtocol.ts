@@ -1,6 +1,6 @@
 /*
- * Vesktop, a desktop app aiming to give you a snappier Discord Experience
- * Copyright (c) 2025 Vendicated and Vesktop contributors
+ * Velcord, a custom terminal-styled Discord client
+ * Copyright (c) 2025 Vendicated and Velcord contributors
  * SPDX-License-Identifier: GPL-3.0-or-later
  */
 
@@ -10,8 +10,11 @@ import { handleVesktopAssetsProtocol } from "./userAssets";
 import { handleVesktopStaticProtocol } from "./vesktopStatic";
 
 app.whenReady().then(() => {
-    protocol.handle("vesktop", async req => {
+    const handleStaticRequest = async (req: Electron.ProtocolRequest) => {
         const url = new URL(req.url);
+        try {
+            console.log('[vesktop-protocol] request:', req.url);
+        } catch (e) { }
 
         switch (url.hostname) {
             case "assets":
@@ -21,5 +24,8 @@ app.whenReady().then(() => {
             default:
                 return new Response(null, { status: 404 });
         }
-    });
+    };
+
+    protocol.handle("vesktop", handleStaticRequest);
+    protocol.handle("velcord", handleStaticRequest);
 });

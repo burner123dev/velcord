@@ -7,8 +7,8 @@
 import { BuildContext, BuildOptions, context } from "esbuild";
 import { copyFile } from "fs/promises";
 
-import vencordDep from "./vencordDep.mjs";
-import { includeDirPlugin } from "./includeDirPlugin.mts";
+import vencordDep from "./scripts/build/vencordDep.mjs";
+import { includeDirPlugin } from "./scripts/build/includeDirPlugin.mts";
 
 const isDev = process.argv.includes("--dev");
 

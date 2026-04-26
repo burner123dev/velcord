@@ -79,7 +79,7 @@ function Asset({ asset }: { asset: UserAssetType }) {
             <div className="vcd-user-assets-asset">
                 <img
                     className="vcd-user-assets-image"
-                    src={`vesktop://assets/${asset}?v=${version}`}
+                    src={`velcord://assets/${asset}?v=${version}`}
                     alt=""
                     style={{ imageRendering }}
                 />

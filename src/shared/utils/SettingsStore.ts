@@ -15,11 +15,7 @@ type ResolvePropDeep<T, P> = P extends `${infer Pre}.${infer Suf}`
       ? T[P]
       : any;
 
-/**
- * The SettingsStore allows you to easily create a mutable store that
- * has support for global and path-based change listeners.
- */
-export class SettingsStore<T extends object> {
+export class SettingsStore<T> {
     private pathListeners = new Map<string, Set<(newData: any) => void>>();
     private globalListeners = new Set<(newData: T, path: string) => void>();
 

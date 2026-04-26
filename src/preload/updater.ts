@@ -10,7 +10,7 @@ import { UpdaterIpcEvents } from "shared/IpcEvents";
 
 import { invoke } from "./typedIpc";
 
-contextBridge.exposeInMainWorld("VesktopUpdaterNative", {
+contextBridge.exposeInMainWorld("VelcordUpdaterNative", {
     getData: () => invoke<UpdateInfo>(UpdaterIpcEvents.GET_DATA),
     installUpdate: () => invoke(UpdaterIpcEvents.INSTALL),
     onProgress: (cb: (percent: number) => void) => {

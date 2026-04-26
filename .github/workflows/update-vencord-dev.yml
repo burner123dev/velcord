@@ -1,4 +1,4 @@
-name: Update vencord.dev Vesktop version
+name: Update vencord.dev Velcord version
 
 on:
     release:
@@ -9,7 +9,7 @@ jobs:
     update:
         runs-on: ubuntu-latest
         steps:
-            - name: Update scripts/_latestVesktopVersion.txt file in vencord.dev repo
+                        - name: Update scripts/_latestVelcordVersion.txt file in vencord.dev repo
               run: |
                   git config --global user.name "$USERNAME"
                   git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
@@ -18,10 +18,10 @@ jobs:
 
                   cd repo
                   version="${{ github.event.release.tag_name }}"
-                  echo "${version#v}" > scripts/_latestVesktopVersion.txt
+                  echo "${version#v}" > scripts/_latestVelcordVersion.txt
                   
-                  git add scripts/_latestVesktopVersion.txt
-                  git commit -m "Update Vesktop version to ${{ github.event.release.tag_name }}"
+                  git add scripts/_latestVelcordVersion.txt
+                  git commit -m "Update Velcord version to ${{ github.event.release.tag_name }}"
                   git push https://$USERNAME:$API_TOKEN@github.com/$GH_REPO.git
               env:
                   API_TOKEN: ${{ secrets.VENCORD_DEV_GITHUB_TOKEN }}

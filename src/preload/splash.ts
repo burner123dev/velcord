@@ -6,7 +6,7 @@
 
 import { contextBridge, ipcRenderer } from "electron/renderer";
 
-contextBridge.exposeInMainWorld("VesktopSplashNative", {
+contextBridge.exposeInMainWorld("VelcordSplashNative", {
     onUpdateMessage(callback: (message: string) => void) {
         ipcRenderer.on("update-splash-message", (_, message: string) => callback(message));
     }

@@ -6,4 +6,4 @@
 
 import { Logger } from "@vencord/types/utils";
 
-export const VesktopLogger = new Logger("Vesktop", "#d3869b");
+export const VelcordLogger = new Logger("Velcord", "#d3869b");

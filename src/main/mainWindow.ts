@@ -77,24 +77,24 @@ function initMenuBar(win: BrowserWindow) {
 
     const subMenu = [
         {
-            label: "About Vesktop",
+            label: "About Velcord",
             click: createAboutWindow
         },
         {
-            label: "Force Update Vencord",
+            label: "Force Update Velcord",
             async click() {
                 await downloadVencordFiles();
                 app.relaunch();
                 app.quit();
             },
-            toolTip: "Vesktop will automatically restart after this operation"
+            toolTip: "Velcord will automatically restart after this operation"
         },
         {
-            label: "Reset Vesktop",
+            label: "Reset Velcord",
             async click() {
                 await clearData(win);
             },
-            toolTip: "Vesktop will automatically restart after this operation"
+            toolTip: "Velcord will automatically restart after this operation"
         },
         {
             label: "Relaunch",
@@ -161,7 +161,7 @@ function initMenuBar(win: BrowserWindow) {
 
     const menuItems = [
         {
-            label: "Vesktop",
+            label: "Velcord",
             role: "appMenu",
             submenu: subMenu.filter(isTruthy)
         },
@@ -270,7 +270,7 @@ function initStaticTitle(win: BrowserWindow) {
 
     addSettingsListener("staticTitle", enabled => {
         if (enabled) {
-            win.setTitle("Vesktop");
+            win.setTitle("Velcord");
             win.on("page-title-updated", listener);
         } else {
             win.off("page-title-updated", listener);
@@ -321,9 +321,12 @@ function buildBrowserWindowOptions(): BrowserWindowConstructorOptions {
     const backgroundColor =
         splashTheming !== false ? splashBackground : nativeTheme.shouldUseDarkColors ? "#313338" : "#ffffff";
 
+    const appIcon = join(__dirname, "..", "..", "..", "logo.png");
+
     const options: BrowserWindowConstructorOptions = {
         show: Settings.store.enableSplashScreen === false && !CommandLine.values["start-minimized"],
         backgroundColor,
+        icon: process.platform === "darwin" ? undefined : appIcon,
         webPreferences: {
             nodeIntegration: false,
             sandbox: vencordSupportsSandboxing(),
@@ -354,7 +357,7 @@ function buildBrowserWindowOptions(): BrowserWindowConstructorOptions {
     }
 
     if (staticTitle) {
-        options.title = "Vesktop";
+        options.title = "Velcord";
     }
 
     if (process.platform === "darwin") {

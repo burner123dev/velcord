@@ -1,12 +1,18 @@
 :root {
-    color-scheme: light dark;
+    color-scheme: dark;
 
-    --bg: light-dark(white, hsl(223 6.7% 20.6%));
-    --fg: light-dark(black, white);
-    --fg-secondary: light-dark(#313338, #b5bac1);
-    --fg-semi-trans: light-dark(rgb(0 0 0 / 0.2), rgb(255 255 255 / 0.2));
-    --link: light-dark(#006ce7, #00a8fc);
-    --link-hover: light-dark(#005bb5, #0086c3);
+    --bg: #000000;
+    --bg-alt: #070707;
+    --fg: #c7ff4c;
+    --fg-muted: #7a8f55;
+    --fg-border: rgba(199, 255, 76, 0.18);
+    --fg-semi-trans: rgba(199, 255, 76, 0.12);
+    --link: #7cff00;
+    --link-hover: #b5ff8c;
+    --border: rgba(199, 255, 76, 0.25);
+    --code-font: 'Inconsolata', "Courier New", Consolas, "Liberation Mono", Menlo, monospace;
+    --radius: 1px;
+    --glass-bg: rgba(255,255,255,0.03);
 }
 
 html,
@@ -15,18 +21,99 @@ body {
     padding: 0;
 }
 
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+html,
 body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell,
-        "Open Sans", "Helvetica Neue", sans-serif;
-    background: var(--bg);
+    margin: 0;
+    padding: 0;
+    min-height: 100%;
+    background: radial-gradient(circle at top left, rgba(124, 255, 0, 0.08), transparent 15%),
+        linear-gradient(180deg, #000 0%, #050505 100%);
     color: var(--fg);
+    font-family: var(--code-font);
+}
+
+body {
+    background-attachment: fixed;
 }
 
 a {
     color: var(--link);
-    transition: color 0.2s linear;
+    text-decoration: none;
 }
 
 a:hover {
     color: var(--link-hover);
+}
+
+button,
+input,
+textarea,
+select,
+summary,
+[role="button"] {
+    font-family: var(--code-font);
+    color: var(--fg);
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.12));
+    backdrop-filter: blur(6px) saturate(140%);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: var(--radius);
+    box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.02);
+}
+
+button {
+    cursor: pointer;
+}
+
+img {
+    filter: grayscale(100%) brightness(1.1) contrast(1.05);
+    opacity: 0.92;
+}
+
+::selection {
+    background: #7cff00;
+    color: #000000;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: #050505;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(124, 255, 0, 0.35);
+    border-radius: 999px;
+}
+
+input,
+textarea,
+select {
+    color: var(--fg);
+    caret-color: #7cff00;
+}
+
+button:hover,
+button:focus-visible {
+    filter: brightness(1.1);
+}
+
+/* Glass panels */
+.wrapper,
+dialog,
+.card,
+.panel,
+.vc-velcord-settings,
+header,
+footer {
+    background: var(--glass-bg);
+    border: 1px solid rgba(255,255,255,0.04);
+    backdrop-filter: blur(6px) saturate(120%);
+    border-radius: var(--radius);
 }

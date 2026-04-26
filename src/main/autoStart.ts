@@ -29,7 +29,7 @@ function getEscapedCommandLine() {
 function makeAutoStartLinuxDesktop(): AutoStart {
     const configDir = process.env.XDG_CONFIG_HOME || join(process.env.HOME!, ".config");
     const dir = join(configDir, "autostart");
-    const file = join(dir, "vesktop.desktop");
+    const file = join(dir, "velcord.desktop");
 
     return {
         isEnabled: () => existsSync(file),
@@ -37,12 +37,12 @@ function makeAutoStartLinuxDesktop(): AutoStart {
             const desktopFile = stripIndent`
                 [Desktop Entry]
                 Type=Application
-                Name=Vesktop
-                Comment=Vesktop autostart script
+                Name=Velcord
+                Comment=Velcord autostart script
                 Exec=${getEscapedCommandLine().join(" ")}
                 StartupNotify=false
                 Terminal=false
-                Icon=vesktop
+                Icon=velcord
             `;
 
             mkdirSync(dir, { recursive: true });
@@ -83,7 +83,7 @@ const autoStartWindowsMac: AutoStart = {
 };
 
 // The portal call uses the app id by default, which is org.chromium.Chromium, even in packaged Vesktop.
-// This leads to an autostart entry named "Chromium" instead of "Vesktop".
+// This leads to an autostart entry named "Chromium" instead of "Velcord".
 // Thus, only use the portal inside Flatpak, where the app is actually correct.
 // Maybe there is a way to fix it outside of flatpak, but I couldn't figure it out.
 export const autoStart =

@@ -1,8 +1,8 @@
-# Vesktop
+# Velcord
 
-Vesktop is a custom Discord desktop app
+Velcord is a custom Discord desktop app
 
-**Main features**:
+- **Main features**:
 - Vencord preinstalled
 - Much more lightweight and faster than the official Discord app
 - Linux Screenshare with sound & wayland
@@ -12,12 +12,11 @@ Vesktop is a custom Discord desktop app
 - Global Keybinds
 - see the [Roadmap](https://github.com/Vencord/Vesktop/issues/324)
 
-![](https://github.com/Vencord/Vesktop/assets/45497981/8608a899-96a9-4027-9725-2cb02ba189fd)
-![](https://github.com/Vencord/Vesktop/assets/45497981/8701e5de-52c4-4346-a990-719cb971642e)
+![Velcord logo](./logo.png)
 
 ## Installing
 
-Visit https://vesktop.dev/install
+Visit https://velcord.dev/install
 
 ## Building from Source
 
@@ -29,8 +28,8 @@ You need to have the following dependencies installed:
 Packaging will create builds in the dist/ folder
 
 ```sh
-git clone https://github.com/Vencord/Vesktop
-cd Vesktop
+git clone https://github.com/Velcord/Velcord
+cd Velcord
 
 # Install Dependencies
 pnpm i
@@ -50,11 +49,11 @@ pnpm package:dir
 
 ## Building LibVesktop from Source
 
-This is a small C++ helper library Vesktop uses on Linux to emit D-Bus events. By default, prebuilt binaries for x64 and arm64 are used.
+This is a small C++ helper library Velcord uses on Linux to emit D-Bus events. By default, prebuilt binaries for x64 and arm64 are used.
 
 If you want to build it from source:
 1. Install build dependencies:
     - Debian/Ubuntu: `apt install build-essential python3 curl pkg-config libglib2.0-dev`
     - Fedora: `dnf install @c-development @development-tools python3 curl pkgconf-pkg-config glib2-devel`
 2. Run `pnpm buildLibVesktop`
-3. From now on, building Vesktop will use your own build
+3. From now on, building Velcord will use your own build
